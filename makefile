@@ -14,10 +14,19 @@ window: window.o main_window.o
 paned: paned.o main_window.o
 	$(CC) -o $@ $^ $(GTK)
 
+grid: grid.o grid_cb.o main_window.o
+	$(CC) -o $@ $^ $(GTK)
+
 window.o: window.c
 	$(CC) -c $< $(GTK)
 
 paned.o: paned.c
+	$(CC) -c $< $(GTK)
+
+grid.o: grid.c
+	$(CC) -c $< $(GTK)
+
+grid_cb.o: grid_cb.c
 	$(CC) -c $< $(GTK)
 
 main_window.o: main_window.c
@@ -25,4 +34,4 @@ main_window.o: main_window.c
 
 
 clean:
-	rm -f *.o hello window paned
+	rm -f *.o hello window paned grid
