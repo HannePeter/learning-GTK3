@@ -11,7 +11,13 @@ hello: hello_world.c
 window: window.o main_window.o
 	$(CC) -o $@ $^ $(GTK)
 
+paned: paned.o main_window.o
+	$(CC) -o $@ $^ $(GTK)
+
 window.o: window.c
+	$(CC) -c $< $(GTK)
+
+paned.o: paned.c
 	$(CC) -c $< $(GTK)
 
 main_window.o: main_window.c
@@ -19,4 +25,4 @@ main_window.o: main_window.c
 
 
 clean:
-	rm -f *.o hello window
+	rm -f *.o hello window paned
