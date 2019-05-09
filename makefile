@@ -17,10 +17,19 @@ paned: paned.o main_window.o
 grid: grid.o grid_cb.o main_window.o
 	$(CC) -o $@ $^ $(GTK)
 
+buttons: buttons.o buttons_cb.o main_window.o
+	$(CC) -o $@ $^ $(GTK)
+
 window.o: window.c
 	$(CC) -c $< $(GTK)
 
 paned.o: paned.c
+	$(CC) -c $< $(GTK)
+
+buttons.o: buttons.c
+	$(CC) -c $< $(GTK)
+
+buttons_cb.o: buttons_cb.c
 	$(CC) -c $< $(GTK)
 
 grid.o: grid.c
@@ -28,10 +37,9 @@ grid.o: grid.c
 
 grid_cb.o: grid_cb.c
 	$(CC) -c $< $(GTK)
-
 main_window.o: main_window.c
 	$(CC) -c $< $(GTK)
 
 
 clean:
-	rm -f *.o hello window paned grid
+	rm -f *.o hello window paned grid buttons

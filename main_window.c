@@ -43,7 +43,7 @@ static int delete_event(GtkWidget *window, gpointer data)
     }
 }
 
-static void end(GtkWidget *widget, gpointer data)
+void end(GtkWidget *widget, gpointer data)
 {
     puts("Und tschues!");
     gtk_main_quit();
