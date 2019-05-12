@@ -1,6 +1,6 @@
 ERRFLAGS = -W -Wall -Wextra
 OPTFLAGS = -std=c11
-GTK = `pkg-config --libs --cflags gtk+-3.0`
+GTK = `pkg-config --libs --cflags gtk+-3.0 gmodule-2.0`
 CC = gcc $(ERRFLAGS) $(OPTFLAGS)
 
 
@@ -9,6 +9,9 @@ hello: hello_world.c
 	$(CC) -o $@ $< $(GTK)
 
 builder_hello: builder_hello_world.c
+	$(CC) -o $@ $< $(GTK)
+
+builder_signals: builder_signals.c
 	$(CC) -o $@ $< $(GTK)
 
 window: window.o main_window.o
@@ -64,4 +67,4 @@ main_window.o: main_window.c
 
 
 clean:
-	rm -f *.o hello window paned grid buttons events layout builder_hello
+	rm -f *.o hello window paned grid buttons events layout builder_hello builder_signals
