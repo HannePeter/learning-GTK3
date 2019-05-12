@@ -8,6 +8,9 @@ CC = gcc $(ERRFLAGS) $(OPTFLAGS)
 hello: hello_world.c
 	$(CC) -o $@ $< $(GTK)
 
+builder_hello: builder_hello_world.c
+	$(CC) -o $@ $< $(GTK)
+
 window: window.o main_window.o
 	$(CC) -o $@ $^ $(GTK)
 
@@ -61,4 +64,4 @@ main_window.o: main_window.c
 
 
 clean:
-	rm -f *.o hello window paned grid buttons events layout
+	rm -f *.o hello window paned grid buttons events layout builder_hello
